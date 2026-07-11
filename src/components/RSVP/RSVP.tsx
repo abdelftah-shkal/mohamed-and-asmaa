@@ -1,31 +1,29 @@
-import { useRef, useState } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Send, CheckCircle } from "lucide-react"
-import { useLanguage } from "../../hooks/useLanguage"
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Send, CheckCircle } from "lucide-react";
+import { useLanguage } from "../../hooks/useLanguage";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0 },
-}
+};
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
   phone: z.string().min(6, "Phone is required"),
-  guests: z.number().min(1, "At least 1 guest"),
-  attendance: z.enum(["attending", "notAttending"]),
   message: z.string().optional(),
-})
+});
 
-type FormData = z.infer<typeof schema>
+type FormData = z.infer<typeof schema>;
 
 export default function RSVP() {
-  const { content, lang } = useLanguage()
-  const [submitted, setSubmitted] = useState(false)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { content, lang } = useLanguage();
+  const [submitted, setSubmitted] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const {
     register,
@@ -33,14 +31,30 @@ export default function RSVP() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      attendance: "attending",
-    },
-  })
+  });
+async function onSubmit(data: FormData) {
+  const formData = new FormData()
 
-  function onSubmit(_data: FormData) {
+  formData.append("entry.2064618049", data.name)
+  formData.append("entry.932710686", data.phone)
+  formData.append("entry.282929456", data.message || "")
+
+  try {
+    await fetch(
+      "https://docs.google.com/forms/d/e/1FAIpQLSdQ_Kmv1AHZoeLAwK6hl0FFoYVqByYmLGtowuzt8WMK4gjc_A/formResponse",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      }
+    )
+
     setSubmitted(true)
+  } catch (error) {
+    console.error(error)
+    alert("Failed to send.")
   }
+}
 
   return (
     <section ref={ref} className="relative px-6 py-28 md:py-40 bg-white">
@@ -104,7 +118,9 @@ export default function RSVP() {
                   className={`w-full px-5 py-4 bg-[#FAF8F2] border border-[#D4AF37]/10 text-[#2C2C2C] font-serif text-base outline-none focus:border-[#D4AF37]/50 transition-colors duration-300 ${lang === "ar" ? "text-right" : ""}`}
                 />
                 {errors.name && (
-                  <p className="text-[#D4AF37] text-xs mt-1 font-sans">{errors.name.message}</p>
+                  <p className="text-[#D4AF37] text-xs mt-1 font-sans">
+                    {errors.name.message}
+                  </p>
                 )}
               </div>
 
@@ -115,31 +131,10 @@ export default function RSVP() {
                   className={`w-full px-5 py-4 bg-[#FAF8F2] border border-[#D4AF37]/10 text-[#2C2C2C] font-serif text-base outline-none focus:border-[#D4AF37]/50 transition-colors duration-300 ${lang === "ar" ? "text-right" : ""}`}
                 />
                 {errors.phone && (
-                  <p className="text-[#D4AF37] text-xs mt-1 font-sans">{errors.phone.message}</p>
+                  <p className="text-[#D4AF37] text-xs mt-1 font-sans">
+                    {errors.phone.message}
+                  </p>
                 )}
-              </div>
-
-              <div>
-                <input
-                  {...register("guests", { valueAsNumber: true })}
-                  type="number"
-                  min="1"
-                  placeholder={content.rsvp.guests}
-                  className={`w-full px-5 py-4 bg-[#FAF8F2] border border-[#D4AF37]/10 text-[#2C2C2C] font-serif text-base outline-none focus:border-[#D4AF37]/50 transition-colors duration-300 ${lang === "ar" ? "text-right" : ""}`}
-                />
-                {errors.guests && (
-                  <p className="text-[#D4AF37] text-xs mt-1 font-sans">{errors.guests.message}</p>
-                )}
-              </div>
-
-              <div>
-                <select
-                  {...register("attendance")}
-                  className={`w-full px-5 py-4 bg-[#FAF8F2] border border-[#D4AF37]/10 text-[#2C2C2C] font-serif text-base outline-none focus:border-[#D4AF37]/50 transition-colors duration-300 ${lang === "ar" ? "text-right" : ""}`}
-                >
-                  <option value="attending">{content.rsvp.attending}</option>
-                  <option value="notAttending">{content.rsvp.notAttending}</option>
-                </select>
               </div>
 
               <div>
@@ -163,5 +158,5 @@ export default function RSVP() {
         </AnimatePresence>
       </div>
     </section>
-  )
+  );
 }

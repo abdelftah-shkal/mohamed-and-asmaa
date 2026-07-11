@@ -345,13 +345,13 @@ export const weddingData: WeddingData = {
   galleryImages: [
     { src: "/assets/image1.jpeg", alt: "Elegant wedding ceremony setup with golden decorations", span: "md:col-span-2 md:row-span-1" },
     { src: "/assets/image2.jpeg", alt: "Beautiful wedding arch with white flowers", span: "md:col-span-1 md:row-span-2" },
-    { src: "/assets/image3.jpeg", alt: "Romantic couple portrait in golden hour", span: "md:col-span-1 md:row-span-1" },
+    { src: "/assets/image9.jpg", alt: "Romantic couple portrait in golden hour", span: "md:col-span-1 md:row-span-1" },
     { src: "/assets/image4.jpeg", alt: "Intertwined wedding rings on silk", span: "md:col-span-1 md:row-span-1" },
-    { src: "/assets/image5.jpeg", alt: "Luxury floral arrangements in gold vases", span: "md:col-span-2 md:row-span-1" },
+    { src: "/assets/image8.jpg", alt: "Luxury floral arrangements in gold vases", span: "md:col-span-2 md:row-span-1" },
     { src: "/assets/image6.jpg", alt: "Elegant wedding reception table setup", span: "md:col-span-1 md:row-span-1" },
-    { src: "/assets/image7.jpg", alt: "Bride and groom hands with wedding rings", span: "md:col-span-1 md:row-span-1" },
-    { src: "/assets/image8.jpg", alt: "Luxury wedding cake with gold details", span: "md:col-span-1 md:row-span-1" },
-    { src: "/assets/image9.jpg", alt: "Sunset wedding ceremony by the beach", span: "md:col-span-2 md:row-span-1" },
+    { src: "/assets/image5.jpeg", alt: "Bride and groom hands with wedding rings", span: "md:col-span-1 md:row-span-1" },
+    { src: "/assets/image9.jpg", alt: "Luxury wedding cake with gold details", span: "md:col-span-1 md:row-span-1" },
+    { src: "/assets/image3.jpeg", alt: "Sunset wedding ceremony by the beach", span: "md:col-span-2 md:row-span-1" },
   ],
 
   eventDetails: [
