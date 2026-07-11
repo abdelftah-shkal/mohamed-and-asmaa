@@ -26,10 +26,8 @@ export interface VenueInfo {
 export interface SocialLinks {
   email: string
   whatsapp: string
-  linkedin: string
-  github: string
   instagram: string
-  portfolio: string
+
 }
 
 export interface LanguageContent {
