@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Mail, Phone, Globe, ExternalLink, Camera, Code } from "lucide-react"
+import { Mail, Phone, Camera} from "lucide-react"
 import { useLanguage } from "../../hooks/useLanguage"
 import { weddingData } from "../../data/wedding"
 
