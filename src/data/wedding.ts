@@ -314,17 +314,17 @@ export const weddingData: WeddingData = {
 
   timelineEvents: [
     {
-      year: "2020",
+      year: "2023",
       title: "First Meeting",
       description: "Our paths crossed at a mutual friend's gathering. Little did we know, this was the beginning of our forever.",
     },
     {
-      year: "2025",
+      year: "2024",
       title: "The Proposal",
       description: "Under a sky full of stars, a question was asked that changed everything. The answer was an overwhelming yes.",
     },
     {
-      year: "2025",
+      year: "2024",
       title: "Engagement",
       description: "Surrounded by family and friends, we celebrated our engagement. The journey to our forever had officially begun.",
     },
@@ -350,13 +350,13 @@ export const weddingData: WeddingData = {
   eventDetails: [
     {
       title: "Wedding Ceremony",
-      time: "18:00",
+      time: "20:00",
       description: "The main ceremony followed by dinner and celebrations",
       icon: "heart",
     },
     {
       title: "Henna Night",
-      time: "20:00",
+      time: "21:00",
       description: "Traditional henna celebration with family and friends",
       icon: "sparkles",
     },
