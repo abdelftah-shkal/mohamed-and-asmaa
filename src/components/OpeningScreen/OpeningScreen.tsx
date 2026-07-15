@@ -159,13 +159,13 @@ export default function OpeningScreen({ onOpen }: Props) {
 
         <div ref={namesRef} className="flex flex-wrap justify-center gap-x-4 gap-y-1 px-4" style={{ minHeight: "3.2rem" }}>
           {groomLetters.map((l, i) => (
-            <span key={`ng-${i}`} className="text-4xl md:text-6xl font-display text-[#2C2C2C] tracking-wide italic leading-tight" style={{ display: "inline-block" }}>
+            <span key={`ng-${i}`} className="text-4xl md:text-6xl font-display !text-[#D4AF37] tracking-wide italic leading-tight" style={{ display: "inline-block" }}>
               {l === " " ? "\u00A0" : l}
             </span>
           ))}
-          <span className="text-4xl md:text-6xl font-display text-[#D4AF37] mx-2 font-light italic leading-tight" style={{ display: "inline-block" }}>&amp;</span>
+          <span className="text-4xl md:text-6xl font-display !text-[#D4AF37] mx-2 font-light italic leading-tight" style={{ display: "inline-block" }}>&amp;</span>
           {brideLetters.map((l, i) => (
-            <span key={`nb-${i}`} className="text-4xl md:text-6xl font-display text-[#2C2C2C] tracking-wide italic leading-tight" style={{ display: "inline-block" }}>
+            <span key={`nb-${i}`} className="text-4xl md:text-6xl font-display !text-[#D4AF37] tracking-wide italic leading-tight" style={{ display: "inline-block" }}>
               {l === " " ? "\u00A0" : l}
             </span>
           ))}
